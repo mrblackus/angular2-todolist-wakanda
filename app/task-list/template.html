@@ -1,0 +1,6 @@
+<ul>
+  <li *ngFor="#t of tasks">
+    {{t.label}}
+    <span *ngIf="t.done">[done]</span>
+  </li>
+</ul>
