@@ -1,4 +1,5 @@
 import {Task} from '../task';
+import WakJSC from 'wakjsc/wakjsc';
 
 export class TaskService {
   
@@ -11,7 +12,6 @@ export class TaskService {
   getTasks() {
     return this.jsc.getCatalog()
       .then(ds => {
-        console.log('ds', ds);
         return ds.Task.query();
       });
   }

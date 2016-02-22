@@ -16,7 +16,6 @@ export class TaskListComponent implements OnInit {
   }
   
   ngOnInit() {
-    
     this._taskService.getTasks()
       .then(collection => {
         console.log(collection);
