@@ -1,5 +1,6 @@
 import {Component} from 'angular2/core';
 import {Task} from '../task';
+import {TaskService} from '../service/task.service';
 
 @Component({
   selector: 'add-task',
@@ -10,6 +11,9 @@ export class AddTaskComponent {
   public newTask: string = '';
   private tasks: Task[];
   
+  constructor(private _taskService: TaskService) {
+  }
+  
   addTask() {
     if (this.newTask) {
       let task = {
@@ -18,8 +22,10 @@ export class AddTaskComponent {
         done: false
       };
       
-      this.tasks.push(task);
-      this.newTask = '';
+      this._taskService.addTask(task)
+        .then(t => {
+          this.tasks.push(t);
+        });
     }
   }
 }
